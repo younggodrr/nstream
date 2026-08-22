@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary);background:transparent}
+h2{font-size:18px;font-weight:500;margin:1.5rem 0 0.5rem}
+h3{font-size:15px;font-weight:500;margin:1rem 0 0.4rem;color:var(--color-text-secondary)}
+.section{margin-bottom:2rem}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:4px}
+.badge-purple{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-secondary)}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:0.75rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.feature-title{font-size:13px;font-weight:500;margin-bottom:4px}
+.feature-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.flow-row{display:flex;align-items:center;gap:0;margin:0.5rem 0;flex-wrap:wrap}
+.flow-node{background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);border-radius:6px;padding:5px 10px;font-size:12px;font-weight:500;white-space:nowrap}
+.flow-arrow{font-size:14px;color:var(--color-text-tertiary);padding:0 4px}
+.accent-purple{border-left:2px solid #7F77DD;padding-left:10px}
+.accent-teal{border-left:2px solid #1D9E75;padding-left:10px}
+.accent-coral{border-left:2px solid #D85A30;padding-left:10px}
+.accent-amber{border-left:2px solid #BA7517;padding-left:10px}
+.tag{font-size:11px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:4px;padding:1px 6px;color:var(--color-text-secondary)}
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.platform-card{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:8px 10px;font-size:12px}
+.platform-label{font-weight:500;font-size:12px;margin-bottom:2px}
+.platform-sub{font-size:11px;color:var(--color-text-secondary)}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1.5rem 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rust-tag{font-size:10px;font-weight:500;padding:1px 5px;border-radius:3px;background:#534AB7;color:#EEEDFE;vertical-align:middle;margin-left:4px}
+</style>
+</head>
+<body>
+
+<div style="padding:1rem 0">
+
+<div class="section">
+  <h2>NStream — complete product architecture</h2>
+  <p style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-top:4px">A unified AI-powered media platform serving three distinct customer segments through a single cloud-GPU backend written entirely in Rust.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Customer segments and products</h2>
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <div class="feature-title">Studios and streaming platforms</div>
+      <div class="feature-desc">Netflix, Disney, Prime Video, independent studios. Offline batch processing of full-length films and series.</div>
+    </div>
+    <div class="card accent-teal">
+      <div class="feature-title">Live streamers</div>
+      <div class="feature-desc">Twitch, YouTube Live, Kick creators. Real-time enhanced streams with up to 5-minute processing delay.</div>
+    </div>
+    <div class="card accent-coral">
+      <div class="feature-title">Content creators</div>
+      <div class="feature-desc">YouTube, TikTok, Instagram. Upload-and-dub workflows with selective scene processing and ad sync.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Full feature list</h2>
+
+  <h3>Dubbing and voice</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="feature-title">Multilingual dubbing <span class="rust-tag">Rust</span></div>
+      <div class="feature-desc">Any source language to any target language. 100+ language pairs. Parallel language processing from a single job submission.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Expressive voice cloning</div>
+      <div class="feature-desc">High-fidelity clone of original actor voice. Prosody, emotion, breathing, and micro-pauses preserved. Feels like the actor spoke the target language natively.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Forced alignment</div>
+      <div class="feature-desc">Phoneme-level audio alignment using Whisper. Ensures dubbed audio timing matches scene cuts and character mouth movements frame-accurately.</div>
+    </div>
+  </div>
+
+  <h3>Lip sync and face</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="feature-title">Frame-accurate lip sync</div>
+      <div class="feature-desc">AI-driven lip and mouth alteration matched to dubbed audio. Temporal consistency maintained across full 2-hour features without drift.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Multi-camera lip sync</div>
+      <div class="feature-desc">Handles multiple camera angles simultaneously. Consistent face alteration across cuts and angle switches in live and batch modes.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Face preservation</div>
+      <div class="feature-desc">Only the lip and jaw region is modified. Eyes, skin, hair, and non-mouth facial features remain untouched to preserve performance integrity.</div>
+    </div>
+  </div>
+
+  <h3>Live stream mode</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="feature-title">5-minute buffer pipeline <span class="rust-tag">Rust</span></div>
+      <div class="feature-desc">Sliding ring buffer holds up to 5 minutes of raw stream. Enables full AI processing quality on live content without real-time latency constraints.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">AI video upscaling</div>
+      <div class="feature-desc">Real-time upscaling from 1080p to 4K-quality detail recovery. Adaptive quality based on streamer GPU tier — shader-fast on low-end, AI-grade on high-end.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Cinematic visual effects</div>
+      <div class="feature-desc">Automatic cinematic LUT grading, bloom and lens effects, simulated depth-of-field, film grain, and motion-reactive particle overlays.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Dynamic sound effects</div>
+      <div class="feature-desc">AI event detection triggers Foley-style audio injection. Environmental reverb, impact sounds, background ambience layers, and EBU R128 loudness compliance.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Multi-camera live editing</div>
+      <div class="feature-desc">Ingests simultaneous feeds from multiple cameras. AI selects best angle automatically based on motion, face detection, and scene energy. Director override via API.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">OBS and Streamlabs integration</div>
+      <div class="feature-desc">Connects via RTMP or SRT push from streaming software. Returns enhanced stream as a virtual camera and audio device. One-click setup for streamers.</div>
+    </div>
+  </div>
+
+  <h3>Studio batch mode</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="feature-title">Fast batch processing <span class="rust-tag">Rust</span></div>
+      <div class="feature-desc">Target under 24 hours per feature film per language on a single GPU node. Parallel multi-language jobs scale linearly without quality loss.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Video enhancement</div>
+      <div class="feature-desc">Upscaling, noise reduction, shaky-footage stabilization, intelligent sharpening, and HDR-aware color correction for studio-grade output.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Audio post-production</div>
+      <div class="feature-desc">Full audio polish pass: mixing, loudness normalization, subtle Foley insertion matched to dubbed voice, and room acoustic simulation per scene.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">NLE-ready export</div>
+      <div class="feature-desc">Output in ProRes and DNxHR with EDL and XML sidecar files. Drops directly into DaVinci Resolve and Premiere timelines with zero manual alignment.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">QC report</div>
+      <div class="feature-desc">Automated NStream Certified report per job: lip-sync error in frames, voice naturalness MOS score, PSNR for video, EBU R128 compliance, and re-take rate estimate.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Studio API</div>
+      <div class="feature-desc">REST API for direct integration into studio workflows. Submit jobs, poll status, download outputs, and receive webhook notifications on completion.</div>
+    </div>
+  </div>
+
+  <h3>Creator tools</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="feature-title">Upload and dub</div>
+      <div class="feature-desc">Upload any video. Select target languages. Receive parallel dubbed outputs. Optimized for YouTube, TikTok, Instagram Reels, and Shorts formats.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Selective scene dubbing</div>
+      <div class="feature-desc">Mark specific timestamp ranges on a timeline. Only those scenes are processed. Saves cost and time for creators who only need key moments dubbed.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Live ad sync</div>
+      <div class="feature-desc">Pre-dubbed ads inserted at natural pause points. Synced to stream language. Seamless audio and visual transition. Creator earns from localized ad inventory.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Pipeline flows</h2>
+
+  <h3>Studio batch pipeline</h3>
+  <div class="card" style="overflow-x:auto">
+    <div class="flow-row">
+      <div class="flow-node">Upload or S3 ingest</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Validate and inspect</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Scene chunker</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">ASR and alignment</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Translation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Voice clone and TTS</div>
+    </div>
+    <div class="flow-row" style="margin-top:6px">
+      <div class="flow-node">Lip sync</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Video enhance</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Audio polish</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Encode and mux</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">QC report</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">NLE export</div>
+    </div>
+  </div>
+
+  <h3>Live stream pipeline</h3>
+  <div class="card" style="overflow-x:auto">
+    <div class="flow-row">
+      <div class="flow-node">RTMP or SRT ingest</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Multi-camera selector</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">5-min ring buffer</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">ASR streaming</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Translation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">TTS and voice</div>
+    </div>
+    <div class="flow-row" style="margin-top:6px">
+      <div class="flow-node">Lip sync</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Upscale and VFX</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">SFX injection</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Ad sync check</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Re-encode</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">RTMP push out</div>
+    </div>
+  </div>
+
+  <h3>Creator selective scene pipeline</h3>
+  <div class="card" style="overflow-x:auto">
+    <div class="flow-row">
+      <div class="flow-node">Upload</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Timeline UI</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Scene selector</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Selective chunk dispatch</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Full dub pipeline on selected only</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Merge and export</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Platform integrations</h2>
+
+  <h3>Consumer streaming — output destinations</h3>
+  <div class="platform-grid">
+    <div class="platform-card"><div class="platform-label">Twitch</div><div class="platform-sub">RTMP push, enhanced stream</div></div>
+    <div class="platform-card"><div class="platform-label">YouTube Live</div><div class="platform-sub">RTMP push, multi-language audio</div></div>
+    <div class="platform-card"><div class="platform-label">Kick</div><div class="platform-sub">RTMP push</div></div>
+    <div class="platform-card"><div class="platform-label">TikTok Live</div><div class="platform-sub">RTMP push</div></div>
+    <div class="platform-card"><div class="platform-label">Instagram Live</div><div class="platform-sub">RTMP push</div></div>
+    <div class="platform-card"><div class="platform-label">Facebook Live</div><div class="platform-sub">RTMP push</div></div>
+  </div>
+
+  <h3>Creator upload and delivery</h3>
+  <div class="platform-grid">
+    <div class="platform-card"><div class="platform-label">YouTube</div><div class="platform-sub">Upload API, dubbed versions</div></div>
+    <div class="platform-card"><div class="platform-label">TikTok</div><div class="platform-sub">Creator API, Shorts output</div></div>
+    <div class="platform-card"><div class="platform-label">Instagram</div><div class="platform-sub">Reels API</div></div>
+    <div class="platform-card"><div class="platform-label">Twitter / X</div><div class="platform-sub">Media upload API</div></div>
+  </div>
+
+  <h3>Studio and professional delivery</h3>
+  <div class="platform-grid">
+    <div class="platform-card"><div class="platform-label">Netflix</div><div class="platform-sub">Partner delivery API, IMF package</div></div>
+    <div class="platform-card"><div class="platform-label">Prime Video</div><div class="platform-sub">Aspera or S3 delivery</div></div>
+    <div class="platform-card"><div class="platform-label">Disney Plus</div><div class="platform-sub">Studio delivery portal</div></div>
+    <div class="platform-card"><div class="platform-label">DaVinci Resolve</div><div class="platform-sub">EDL and XML plugin</div></div>
+    <div class="platform-card"><div class="platform-label">Premiere Pro</div><div class="platform-sub">XML and extension plugin</div></div>
+    <div class="platform-card"><div class="platform-label">Custom API</div><div class="platform-sub">REST plus webhooks for any studio</div></div>
+  </div>
+
+  <h3>Streamer software integration</h3>
+  <div class="platform-grid">
+    <div class="platform-card"><div class="platform-label">OBS Studio</div><div class="platform-sub">Virtual cam and audio, RTMP proxy</div></div>
+    <div class="platform-card"><div class="platform-label">Streamlabs</div><div class="platform-sub">Plugin or RTMP proxy</div></div>
+    <div class="platform-card"><div class="platform-label">XSplit</div><div class="platform-sub">Virtual device output</div></div>
+    <div class="platform-card"><div class="platform-label">vMix</div><div class="platform-sub">NDI input and output</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Backend architecture — pure Rust</h2>
+
+  <h3>Core crates and responsibilities</h3>
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="feature-title">nstream-core <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">Shared types: MediaPayload, Node trait, NStreamError, JobStatus, timestamps, and metadata structs used across all crates.</div>
+      </div>
+      <div class="card">
+        <div class="feature-title">nstream-dag <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">DAG executor using petgraph. Topological sort, cycle detection, dependency resolution, and async task dispatch per node.</div>
+      </div>
+      <div class="card">
+        <div class="feature-title">nstream-ingest <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">RTMP and SRT server, S3 file intake, multi-camera feed aggregator. Feeds into the ring buffer or batch job queue.</div>
+      </div>
+      <div class="card">
+        <div class="feature-title">nstream-buffer <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">5-minute sliding ring buffer for live mode. Disk-backed overflow for large batch jobs. Zero-copy Arc frame passing.</div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="feature-title">nstream-inference <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">GPU worker pool. Loads ONNX models via ort. Runs ASR, TTS, lip-sync, upscale, and VFX detection. Batched inference with back-pressure.</div>
+      </div>
+      <div class="card">
+        <div class="feature-title">nstream-media <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">FFmpeg bindings via ffmpeg-next. All decode, encode, mux, and filter operations. Hidden behind a MediaDecoder trait for future pure-Rust replacement.</div>
+      </div>
+      <div class="card">
+        <div class="feature-title">nstream-api <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">HTTP REST server via axum. Job submission, status polling, webhook dispatch, billing metrics, and creator timeline API.</div>
+      </div>
+      <div class="card">
+        <div class="feature-title">nstream-observe <span class="rust-tag">Rust</span></div>
+        <div class="feature-desc">Structured logging via tracing. Prometheus metrics per pipeline node. OpenTelemetry distributed tracing. Cost tracking per GPU-second consumed.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Cloud infrastructure</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="feature-title">GPU cloud</div>
+      <div class="feature-desc">CoreWeave and RunPod for H100 and H200 GPU nodes. Spot instances for batch jobs. On-demand for live streams. Auto-scale on queue depth.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Job orchestration</div>
+      <div class="feature-desc">Kubernetes with GPU node selectors. PostgreSQL job queue via sqlx. Exactly-once processing with atomic job claiming and timeout-based recovery.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Storage</div>
+      <div class="feature-desc">S3-compatible object storage for input and output media files. Fast NVMe block storage for active job intermediate frames.</div>
+    </div>
+    <div class="card">
+      <div class="feature-title">Edge ingest</div>
+      <div class="feature-desc">Low-latency RTMP and SRT ingest points close to streamer location. Cloudflare for CDN delivery of enhanced output streams to viewers.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Monetization model</h2>
+  <div class="card-grid">
+    <div class="card accent-purple">
+      <div class="feature-title">Studios</div>
+      <div class="feature-desc">Per-finished-dubbed-minute pricing per language. Enterprise flat license plus usage for large volume. QC report and NLE delivery included.</div>
+    </div>
+    <div class="card accent-teal">
+      <div class="feature-title">Streamers</div>
+      <div class="feature-desc">Monthly subscription tiers by feature set. Free tier with watermark and limited languages. Pro tier unlocks all effects, full lip sync, and 5+ languages.</div>
+    </div>
+    <div class="card accent-coral">
+      <div class="feature-title">Creators</div>
+      <div class="feature-desc">Credit-based usage. Pay per scene-minute processed. Ad revenue share from localized ad sync. Subscription option for high-volume creators.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

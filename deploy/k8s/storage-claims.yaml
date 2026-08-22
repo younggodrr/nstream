@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nstream-live-hls
+spec:
+  accessModes: [ReadWriteOnce]
+  resources: { requests: { storage: 50Gi } }
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nstream-postgres-backups
+spec:
+  accessModes: [ReadWriteOnce]
+  resources: { requests: { storage: 100Gi } }

@@ -1,0 +1,12 @@
+[workspace]
+members = [
+  "nstream-core",
+  "nstream-dag",
+  "nstream-ingest",
+  "nstream-buffer",
+  "nstream-inference",
+  "nstream-media",
+  "nstream-api",
+  "nstream-observe",
+]
+resolver = "2"

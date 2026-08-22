@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nstream-postgres-backup
+spec:
+  schedule: "17 2 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 7
+  failedJobsHistoryLimit: 7
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: pg-dump
+              image: postgres:16-alpine
+              command: ["/bin/sh", "-ec"]
+              args:
+                - >-
+                  pg_dump --format=custom --no-owner --no-privileges "$DATABASE_URL"
+                  > "/backup/$(date -u +%Y-%m-%dT%H-%M-%SZ).dump"
+              envFrom: [{ secretRef: { name: nstream-backup-runtime } }]
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities: { drop: ["ALL"] }
+              volumeMounts: [{ name: backup, mountPath: /backup }]
+          volumes:
+            - name: backup
+              persistentVolumeClaim: { claimName: nstream-postgres-backups }

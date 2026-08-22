@@ -1,0 +1,13 @@
+[package]
+name = "nstream-buffer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nstream-core = { path = "../nstream-core" }
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+bytes = "1"
+uuid = { version = "1", features = ["v4"] }
+thiserror = "1"
+serde_json = "1"

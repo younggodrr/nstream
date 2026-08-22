@@ -1,0 +1,16 @@
+[package]
+name = "nstream-ingest"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nstream-core = { path = "../nstream-core" }
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+bytes = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+thiserror = "1"
+async-trait = "0.1"
+reqwest = { version = "0.12", default-features = false }
+aws-config = "=0.56.1"
+aws-sdk-s3 = "=0.34.0"

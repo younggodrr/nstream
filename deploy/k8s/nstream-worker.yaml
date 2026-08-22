@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nstream-worker
+  labels: { app: nstream-worker }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: nstream-worker } }
+  template:
+    metadata: { labels: { app: nstream-worker } }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: worker
+          image: ghcr.io/your-org/nstream-api:REPLACE_WITH_TAG
+          command: ["nstream-worker"]
+          envFrom: [{ secretRef: { name: nstream-runtime } }]
+          resources:
+            requests: { cpu: "2", memory: "4Gi" }
+            limits: { cpu: "8", memory: "16Gi", nvidia.com/gpu: "1" }
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: ["ALL"] } }
+          volumeMounts: [{ name: tmp, mountPath: /tmp }]
+      volumes:
+        - name: tmp
+          emptyDir: { sizeLimit: 20Gi }
