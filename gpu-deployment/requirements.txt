@@ -1,0 +1,8 @@
+# API/runtime requirements for the temporary GPU model worker.
+# MuseTalk's own requirements are installed separately by setup_colab.sh so
+# they remain controlled by the upstream project.
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+pydantic==2.11.4
+PyYAML==6.0.2
+requests==2.32.3
